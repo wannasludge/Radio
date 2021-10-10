@@ -15,6 +15,13 @@ class RadioTest {
     }
 
     @Test
+    public void setVolumeOverLimit() {
+        Radio vol = new Radio();
+        vol.setVol(15);
+        int actual = vol.getVol();
+        assertEquals(10, actual);
+    }
+    @Test
     public void setStation() {
         Radio station = new Radio();
         station.setStation(5);
@@ -59,6 +66,15 @@ class RadioTest {
     }
 
     @Test
+    public void volMinusFor100(){
+            Radio vol = new Radio();
+            vol.setVol(-1);
+            vol.minusVol();
+            int actual = vol.getVol();
+            assertEquals(0, actual);
+        }
+
+    @Test
     public void stationPlus(){
         Radio station = new Radio();
         station.setStation(5);
@@ -88,9 +104,9 @@ class RadioTest {
     @Test
     public void stationMinusMin(){
         Radio station = new Radio();
-        station.setStation(5);
+        station.setStation(0);
         station.minusStation();
         int actual = station.getStation();
-        assertEquals(4, actual);
+        assertEquals(9, actual);
     }
 }
