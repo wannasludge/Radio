@@ -1,48 +1,64 @@
 package ru.netology.domain;
 
 public class Radio {
-    public int vol;
-    public int station;
+    private int currentVol;
+    private int currentStation;
 
     public int getVol(){
-        return vol;
+        return currentVol;
     }
 
     public int getStation(){
-        return station;
+        return currentStation;
     }
 
-    public  void setVol(int newVol){
-        if (newVol > 10) {
-            vol = 10;
+    public void setVol(int currentVol){
+        if (currentVol > 10) {
+            this.currentVol = 10;
             return;
         }
-        if (newVol < 0){
-            vol = 0;
+        if (currentVol < 0){
+            this.currentVol = 0;
+            return;
         }
-        vol = newVol;
+        this.currentVol = currentVol;
     }
 
-    public int volPlus1() {
-        if (vol < 10) {
-            vol = vol + 1;
+    public void plusVol() {
+        if (currentVol < 10) {
+            int newVol = currentVol + 1;
+            setVol(newVol);
         }
-        return vol;
     }
 
-    public int volMinus1() {
-        if (vol > 0) {
-            vol = vol - 1;
+    public void minusVol() {
+        if (currentVol > 0) {
+            int newVol = currentVol - 1;
+            setVol(newVol);
         }
-        return vol;
     }
 
 
     public void setStation(int newStation) {
-        if (newStation > 10) {
-            station = 0;
+        currentStation = newStation;
+    }
+
+    public void plusStation(){
+        if (currentStation == 9) {
+            currentStation = 0;
             return;
         }
-        station = newStation;
+        int newStation = currentStation + 1;
+        setStation(newStation);
     }
+
+    public void minusStation() {
+        if (currentStation == 0) {
+            currentStation = 9;
+            return;
+        }
+        int newStation = currentStation - 1;
+        setStation(newStation);
+    }
+
 }
