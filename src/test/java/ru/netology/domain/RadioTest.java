@@ -6,7 +6,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class RadioTest {
 
-   @Test
+    @Test
     public void setVolume() {
         Radio vol = new Radio();
         vol.setVol(5);
@@ -21,6 +21,7 @@ class RadioTest {
         int actual = vol.getVol();
         assertEquals(10, actual);
     }
+
     @Test
     public void setStation() {
         Radio station = new Radio();
@@ -30,7 +31,23 @@ class RadioTest {
     }
 
     @Test
-    public void volPlus(){
+    public void setStationOverLimitPlus() {
+        Radio station = new Radio();
+        station.setStation(10);
+        int actual = station.getStation();
+        assertEquals(0, actual);
+    }
+
+    @Test
+    public void setStationOverLimitMinus() {
+        Radio station = new Radio();
+        station.setStation(-1);
+        int actual = station.getStation();
+        assertEquals(9, actual);
+    }
+
+    @Test
+    public void volPlus() {
         Radio vol = new Radio();
         vol.setVol(5);
         vol.plusVol();
@@ -39,7 +56,7 @@ class RadioTest {
     }
 
     @Test
-    public void volPlusMax(){
+    public void volPlusMax() {
         Radio vol = new Radio();
         vol.setVol(10);
         vol.plusVol();
@@ -48,7 +65,7 @@ class RadioTest {
     }
 
     @Test
-    public void volMinus(){
+    public void volMinus() {
         Radio vol = new Radio();
         vol.setVol(4);
         vol.minusVol();
@@ -57,7 +74,7 @@ class RadioTest {
     }
 
     @Test
-    public void volMinusMin(){
+    public void volMinusMin() {
         Radio vol = new Radio();
         vol.setVol(0);
         vol.minusVol();
@@ -66,16 +83,16 @@ class RadioTest {
     }
 
     @Test
-    public void volMinusFor100(){
-            Radio vol = new Radio();
-            vol.setVol(-1);
-            vol.minusVol();
-            int actual = vol.getVol();
-            assertEquals(0, actual);
-        }
+    public void volMinusFor100() {
+        Radio vol = new Radio();
+        vol.setVol(-1);
+        vol.minusVol();
+        int actual = vol.getVol();
+        assertEquals(0, actual);
+    }
 
     @Test
-    public void stationPlus(){
+    public void stationPlus() {
         Radio station = new Radio();
         station.setStation(5);
         station.plusStation();
@@ -84,7 +101,7 @@ class RadioTest {
     }
 
     @Test
-    public void stationPlusMax(){
+    public void stationPlusMax() {
         Radio station = new Radio();
         station.setStation(9);
         station.plusStation();
@@ -93,7 +110,7 @@ class RadioTest {
     }
 
     @Test
-    public void stationMinus(){
+    public void stationMinus() {
         Radio station = new Radio();
         station.setStation(5);
         station.minusStation();
@@ -102,7 +119,7 @@ class RadioTest {
     }
 
     @Test
-    public void stationMinusMin(){
+    public void stationMinusMin() {
         Radio station = new Radio();
         station.setStation(0);
         station.minusStation();
