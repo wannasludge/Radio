@@ -40,6 +40,14 @@ public class Radio {
 
 
     public void setStation(int newStation) {
+        if (currentStation > 9) {
+            this.currentStation = 0;
+            return;
+        }
+        if (currentStation < 0){
+            this.currentStation = 9;
+            return;
+        }
         currentStation = newStation;
     }
 
