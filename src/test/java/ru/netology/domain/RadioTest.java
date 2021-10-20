@@ -14,12 +14,13 @@ class RadioTest {
         assertEquals(5, actual);
     }
 
+
     @Test
     public void setVolumeOverLimit() {
         Radio vol = new Radio();
-        vol.setVol(15);
+        vol.setVol(130);
         int actual = vol.getVol();
-        assertEquals(10, actual);
+        assertEquals(100, actual);
     }
 
     @Test
@@ -32,8 +33,8 @@ class RadioTest {
 
     @Test
     public void setStationOverLimitPlus() {
-        Radio station = new Radio();
-        station.setStation(10);
+        Radio station = new Radio(11);
+        station.setStation(15);
         int actual = station.getStation();
         assertEquals(0, actual);
     }
@@ -49,28 +50,26 @@ class RadioTest {
     @Test
     public void volPlus() {
         Radio vol = new Radio();
-        vol.setVol(5);
         vol.plusVol();
         int actual = vol.getVol();
-        assertEquals(6, actual);
+        assertEquals(51, actual);
     }
 
     @Test
     public void volPlusMax() {
         Radio vol = new Radio();
-        vol.setVol(10);
+        vol.setVol(100);
         vol.plusVol();
         int actual = vol.getVol();
-        assertEquals(10, actual);
+        assertEquals(100, actual);
     }
 
     @Test
     public void volMinus() {
         Radio vol = new Radio();
-        vol.setVol(4);
         vol.minusVol();
         int actual = vol.getVol();
-        assertEquals(3, actual);
+        assertEquals(49, actual);
     }
 
     @Test
@@ -93,17 +92,16 @@ class RadioTest {
 
     @Test
     public void stationPlus() {
-        Radio station = new Radio();
-        station.setStation(5);
+        Radio station = new Radio(20);
         station.plusStation();
         int actual = station.getStation();
-        assertEquals(6, actual);
+        assertEquals(10, actual);
     }
 
     @Test
     public void stationPlusMax() {
         Radio station = new Radio();
-        station.setStation(9);
+        station.setStation(station.calculateMaxStation());
         station.plusStation();
         int actual = station.getStation();
         assertEquals(0, actual);
@@ -111,11 +109,10 @@ class RadioTest {
 
     @Test
     public void stationMinus() {
-        Radio station = new Radio();
-        station.setStation(5);
+        Radio station = new Radio(20);
         station.minusStation();
         int actual = station.getStation();
-        assertEquals(4, actual);
+        assertEquals(8, actual);
     }
 
     @Test
@@ -127,4 +124,3 @@ class RadioTest {
         assertEquals(9, actual);
     }
 }
-//comment for pushing and trying actions
